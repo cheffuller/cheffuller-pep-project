@@ -4,7 +4,10 @@ import Model.Account;
 import Util.ConnectionUtil;
 import java.sql.*;
 
+// Data Access Object class for handling database operations related to accounts
 public class AccountDAO {
+
+    // Method to insert a new account into the database
     public Account insertAccount(Account account){
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -16,7 +19,6 @@ public class AccountDAO {
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
                 int accountID = rs.getInt("account_id");
-                System.out.println(accountID);
                 return new Account(accountID, account.getUsername(), account.getPassword());
             }
         } catch(SQLException e){
@@ -25,6 +27,7 @@ public class AccountDAO {
         return null;
     }
 
+    // Method to retrieve an account from the database by username and password
     public Account selectAccount(Account account){
         Connection connection = ConnectionUtil.getConnection();
         try {

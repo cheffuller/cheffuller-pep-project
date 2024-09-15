@@ -7,8 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Data Access Object class for handling CRUD operations related to messages
 public class MessageDAO {
 
+    // Method to insert a new message into the database
     public Message insertMessage(Message message) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -30,6 +32,7 @@ public class MessageDAO {
         return null;
     }
 
+    // Method to retrieve all messages from the database
     public List<Message> getAllMessages() {
         Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
@@ -50,6 +53,7 @@ public class MessageDAO {
         return messages;
     }
 
+    // Method to retrieve a message by its ID
     public Message getMessageByID(int messageID) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -70,6 +74,7 @@ public class MessageDAO {
         return null;
     }
 
+    // Method to delete a message by its ID
     public Message deleteMessage(int messageID) {
         Connection connection = ConnectionUtil.getConnection();
         Message message = getMessageByID(messageID);
@@ -87,6 +92,7 @@ public class MessageDAO {
         return null;
     }
 
+    // Method to update the message text of an existing message
     public Message updateMessage(Message newMessageText) {
         Connection connection = ConnectionUtil.getConnection();
         try {
@@ -105,6 +111,7 @@ public class MessageDAO {
         return null;
     }
 
+    // Method to retrieve all messages posted by a specific account
     public List<Message> getMessagesByAccount(int accountID) {
         Connection connection = ConnectionUtil.getConnection();
         List<Message> messages = new ArrayList<>();
